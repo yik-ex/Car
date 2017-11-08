@@ -79,6 +79,33 @@ void Car::SetColor(const std::string &color)
 	m_color = color;
 }
 
+//Compare two cars by year and return the biggest of then, case they are equal, return the first argument
+const Car & Car::CompareByYear(const Car & car_1, const Car & car_2)
+{
+	if (car_1.GetYear() >= car_2.GetYear())
+	{
+		return car_1;
+	}
+	else
+	{
+		return car_2;
+	}
+}
+
+
+//Compare two cars by year and return the biggest of then, case they are equal, return the first argument
+const Car & Car::CompareByEngine(const Car & car_1, const Car & car_2)
+{
+	if (car_1.GetEngineVolume() >= car_2.GetEngineVolume())
+	{
+		return car_1;
+	}
+	else
+	{
+		return car_2;
+	}
+}
+
 #pragma endregion
 
 #pragma region operator_overloading

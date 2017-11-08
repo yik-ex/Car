@@ -1,32 +1,6 @@
 #include <iostream>
 #include "Car.h"
 
-//Compare two cars by year and return the biggest of then, case they are equal, return the first argument 
-const Car & CompareByYear(const Car & car_1, const Car & car_2)
-{
-	if (car_1.GetYear() >= car_2.GetYear())
-	{
-		return car_1;
-	}
-	else
-	{
-		return car_2;
-	}
-}
-
-//Compare two cars by engine and return the biggest of then, case they are equal, return the first argument 
-const Car & CompareByEngine(const Car & car_1,const Car & car_2)
-{
-	if (car_1.GetEngineVolume() >= car_2.GetEngineVolume())
-	{
-		return car_1;
-	}
-	else
-	{
-		return car_2;
-	}
-}
-
 //Ask user for a car information and return the car generated
 Car GetCar()
 {
@@ -78,7 +52,7 @@ int main(void)
 
 	std::cout << "Comparing 2 cars by year:" << std::endl;
 	
-	if (&car_1 == &CompareByYear(car_1, car_2))
+	if (&car_1 == &Car::CompareByYear(car_1, car_2))
 	{
 		std::cout << "The 1st car is bigger" << std::endl;
 	}
@@ -89,7 +63,7 @@ int main(void)
 
 	std::cout << "Comparing 2 cars by engine:" << std::endl;
 
-	if (&car_1 == &CompareByEngine(car_1, car_2))
+	if (&car_1 == &Car::CompareByEngine(car_1, car_2))
 	{
 		std::cout << "The 1st car is bigger" << std::endl;
 	}

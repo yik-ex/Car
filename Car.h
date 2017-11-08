@@ -22,11 +22,11 @@ public:
 	
 #pragma region	Geters
 
-	std::string GetManufacture(void) const;
-	std::string GetModel(void) const;
+	std::string  GetManufacture(void) const;
+	std::string  GetModel(void) const;
 	unsigned int GetYear(void) const;
 	unsigned int GetEngineVolume(void) const;
-	std::string GetColor(void) const;
+	std::string  GetColor(void) const;
 
 #pragma endregion
 
@@ -40,7 +40,14 @@ public:
 
 #pragma endregion
 
-#pragma region functions
+#pragma region Functions
+
+	static const Car& CompareByYear(const Car&, const Car&);
+	static const Car& CompareByEngine(const Car&, const Car&);
+
+#pragma endregion
+
+#pragma region Overloaded
 
 	friend std::ostream& operator<<(std::ostream&, Car&);
 

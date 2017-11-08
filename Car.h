@@ -1,20 +1,22 @@
 #pragma once
 #include <string>
+#include <iostream>
 
 //This class define a car
 class Car
 {
 private:
 
-	std::string manufacture;
-	std::string model;
-	unsigned int year;
-	unsigned int engine_volume;
-	std::string color;
+	std::string m_manufacture;
+	std::string m_model;
+	unsigned int m_year;
+	unsigned int m_engineVolume;
+	std::string m_color;
 
 public:
 
-	Car() {};
+	Car();
+	Car(Car &);
 	Car(std::string, std::string, unsigned int, unsigned int, std::string);
 	~Car();
 	
@@ -40,7 +42,7 @@ public:
 
 #pragma region functions
 
-	void print(void) const;
+	friend std::ostream& operator<<(std::ostream&, Car&);
 
 #pragma endregion
 

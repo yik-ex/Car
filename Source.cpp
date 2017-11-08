@@ -70,11 +70,11 @@ int main(void)
 	std::cout << "CAR_1" << std::endl;
 
 	car_1 = GetCar();
-	car_1.print();
+	std::cout << car_1;
 
 	std::cout << "CAR_2" << std::endl;
 	car_2 = GetCar();
-	car_2.print();
+	std::cout << car_2;
 
 	std::cout << "Comparing 2 cars by year:" << std::endl;
 	
@@ -97,6 +97,8 @@ int main(void)
 	{
 		std::cout << "The 2nd car is bigger" << std::endl;
 	}
+
+	system("Pause");
 
 	return 0;
 }

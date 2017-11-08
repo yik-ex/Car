@@ -2,8 +2,22 @@
 #include <iostream>
 
 
-Car::Car(std::string manufacture, std::string model, unsigned int year, unsigned int engine, std::string color) 
-	: manufacture(manufacture), model(model), year(year), engine_volume(engine), color(color) {}
+Car::Car()
+{
+	//DoNothing
+}
+
+Car::Car(Car & copyCar)
+{
+	m_manufacture = copyCar.GetManufacture();
+	m_model = copyCar.GetModel();
+	m_year = copyCar.GetYear();
+	m_engineVolume = copyCar.GetEngineVolume();
+	m_color = copyCar.GetColor();
+}
+
+Car::Car(std::string manufacture, std::string model, unsigned int year, unsigned int engine, std::string color)
+	: m_manufacture(manufacture), m_model(model), m_year(year), m_engineVolume(engine), m_color(color) {}
 
 Car::~Car()
 {
@@ -13,27 +27,27 @@ Car::~Car()
 
 std::string Car::GetManufacture(void) const
 {
-	return manufacture;
+	return m_manufacture;
 }
 
 std::string Car::GetModel(void) const
 {
-	return model;
+	return m_model;
 }
 
 unsigned int Car::GetYear(void) const
 {
-	return year;
+	return m_year;
 }
 
 unsigned int Car::GetEngineVolume(void) const
 {
-	return engine_volume;
+	return m_engineVolume;
 }
 
 std::string Car::GetColor(void) const
 {
-	return color;
+	return m_color;
 }
 
 #pragma endregion
@@ -42,41 +56,43 @@ std::string Car::GetColor(void) const
 
 void Car::SetManufacture(const std::string& manufacture)
 {
-	this->manufacture = manufacture;
+	m_manufacture = manufacture;
 }
 
 void Car::SetModel(const std::string &model)
 {
-	this->model = model;
+	m_model = model;
 }
 
 void Car::SetYear(const unsigned int year)
 {
-	this->year = year;
+	m_year = year;
 }
 
 void Car::SetEngineVolume(const unsigned int engine_volume)
 {
-	this->engine_volume = engine_volume;
+	m_engineVolume = engine_volume;
 }
 
 void Car::SetColor(const std::string &color)
 {
-	this->color = color;
+	m_color = color;
 }
 
 #pragma endregion
 
-#pragma region Functions
+#pragma region operator_overloading
 
-void Car::print(void) const
+std::ostream& operator<< (std::ostream& out, Car & someCar)
 {
-	std::cout << "Printing the car info:" << std::endl;
-	std::cout << "Manufacture: " << GetManufacture() << std::endl;
-	std::cout << "Model: " << GetModel() << std::endl;
-	std::cout << "Year:" << GetYear() << std::endl;
-	std::cout << "Engine Volume: " << GetEngineVolume() << std::endl;
-	std::cout << "Color: " << GetColor() << std::endl;
+	out << "Printing the car info: \n";
+	out << "Manufacture: " << someCar.GetManufacture() << "\n";
+	out << "Model: " << someCar.GetModel() << "\n";
+	out << "Year:" << someCar.GetYear() << "\n";
+	out << "Engine Volume: " << someCar.GetEngineVolume() << "\n";
+	out << "Color: " << someCar.GetColor() << "\n";
+	return out;
 }
 
 #pragma endregion
+

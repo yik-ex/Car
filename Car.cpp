@@ -1,6 +1,7 @@
 #include "Car.h"
 #include <iostream>
 
+unsigned int Car::s_plateCounter = 10000000;
 
 Car::Car()
 {
@@ -14,10 +15,11 @@ Car::Car(Car & copyCar)
 	m_year = copyCar.GetYear();
 	m_engineVolume = copyCar.GetEngineVolume();
 	m_color = copyCar.GetColor();
+	m_plateNumber = copyCar.GetPlateNumber();
 }
 
 Car::Car(std::string manufacture, std::string model, unsigned int year, unsigned int engine, std::string color)
-	: m_manufacture(manufacture), m_model(model), m_year(year), m_engineVolume(engine), m_color(color) {}
+	: m_manufacture(manufacture), m_model(model), m_year(year), m_engineVolume(engine), m_color(color), m_plateNumber(++s_plateCounter) {}
 
 Car::~Car()
 {
@@ -43,6 +45,11 @@ unsigned int Car::GetYear(void) const
 unsigned int Car::GetEngineVolume(void) const
 {
 	return m_engineVolume;
+}
+
+unsigned int Car::GetPlateNumber(void) const
+{
+	return m_plateNumber;
 }
 
 std::string Car::GetColor(void) const
@@ -72,6 +79,11 @@ void Car::SetYear(const unsigned int year)
 void Car::SetEngineVolume(const unsigned int engine_volume)
 {
 	m_engineVolume = engine_volume;
+}
+
+void Car::SetPlateNumber(const unsigned int plateNumeber)
+{
+	m_plateNumber = plateNumeber;
 }
 
 void Car::SetColor(const std::string &color)
@@ -118,6 +130,7 @@ std::ostream& operator<< (std::ostream& out, Car & someCar)
 	out << "Year:" << someCar.GetYear() << "\n";
 	out << "Engine Volume: " << someCar.GetEngineVolume() << "\n";
 	out << "Color: " << someCar.GetColor() << "\n";
+	out << "Car Plate:" << someCar.GetPlateNumber() << "\n";
 	return out;
 }
 

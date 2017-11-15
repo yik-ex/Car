@@ -2,7 +2,7 @@
 #include "Car.h"
 
 //Ask user for a car information and return the car generated
-Car GetCar()
+yik::Car GetCar()
 {
 	std::string manufacture;
 	std::string model;
@@ -33,13 +33,13 @@ Car GetCar()
 
 	} while (color.size() >= 10 && std::cout << "Please enter a color with maximum 10 char\n");
 
-	return Car(manufacture, model, year, engine_volume, color);
+	return yik::Car(manufacture, model, year, engine_volume, color);
 
 }
 
 int main(void)
 {
-	Car car_1, car_2;
+	yik::Car car_1, car_2;
 
 	std::cout << "CAR_1" << std::endl;
 
@@ -52,7 +52,7 @@ int main(void)
 
 	std::cout << "Comparing 2 cars by year:" << std::endl;
 	
-	if (&car_1 == &Car::CompareByYear(car_1, car_2))
+	if (&car_1 == &yik::Car::CompareByYear(car_1, car_2))
 	{
 		std::cout << "The 1st car is bigger" << std::endl;
 	}
@@ -63,7 +63,7 @@ int main(void)
 
 	std::cout << "Comparing 2 cars by engine:" << std::endl;
 
-	if (&car_1 == &Car::CompareByEngine(car_1, car_2))
+	if (&car_1 == &yik::Car::CompareByEngine(car_1, car_2))
 	{
 		std::cout << "The 1st car is bigger" << std::endl;
 	}
